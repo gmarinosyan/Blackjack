@@ -12,6 +12,7 @@ var test;
 var zIndex = 1;
 
 $(document).ready(function() {
+    // Initial setup of elements
     $('#playArea').hide();
     $('#hit').hide();
     $('#hitAfterDouble').hide();
@@ -25,6 +26,8 @@ $(document).ready(function() {
     $('#playBankrupt').hide();
     $('#allIn').hide();
     $('#gameOverBG').hide();
+
+    // Play button styling
     $("#play").mouseenter(function() {
         $(this).animate({
             'background-color': '#e74c3c',
@@ -42,7 +45,7 @@ $(document).ready(function() {
         track: true
     });
 
-
+    // Button onclick commands
     $('#play').click(function() {
         play();
     });
@@ -56,6 +59,7 @@ $(document).ready(function() {
     });
 
     $('#playAgain').click(function() {
+        // Reset all elements except for money back to initial values
         $('#playAgain').hide();
         $('#play').hide();
         playerCards.length = 0;
@@ -78,6 +82,7 @@ $(document).ready(function() {
         refreshChipImage();
         updateMoney();
 
+        // Enable droppable elements (bet area)
         $('.droppableBet').droppable({
             drop: function(event, ui) {
                 $(ui.draggable).appendTo("#chipDrop");
@@ -91,6 +96,7 @@ $(document).ready(function() {
             }
         });
 
+        // Enable droppable elements (wallet)
         $('.droppableChips').droppable({
             drop: function(event, ui) {
                 $(ui.draggable).appendTo("#playerChips");
@@ -105,6 +111,7 @@ $(document).ready(function() {
             }
         });
 
+        //Enable draggable elements (chips)
         $('.draggable').draggable({
             revert: "invalid",
             cursor: "move"
@@ -144,18 +151,21 @@ $(document).ready(function() {
 
         $('#bet').hide();
 
+        // If it is impossiible to double down, enable tooltip telling player so
         if (playerBet > playerCash) {
             $('#double').tooltip("enable");
         }
 
         $('#instructions').fadeOut(300);
 
+        // Slide bet area out of the way
         $('#chipDrop').delay(300).animate({
             'width': '100px',
             'left': '30px',
             'right': '100%'
         }, 1000);
 
+        // Fade in game elements
         $('#dealerCards').delay(600).fadeIn(1000);
         $('#playerCards').delay(600).fadeIn(1000);
         $('#hit').delay(600).fadeIn(1000);
@@ -172,9 +182,10 @@ $(document).ready(function() {
         hit();
     });
 
+    // Double down procedure
     $('#double').click(function() {
         if (playerCash >= playerBet) {
-
+            // Double player's bet and append appropriate chips to bet area
             playerCash -= playerBet;
 
             $.each(betChips[0], function(index, value) {
@@ -193,6 +204,7 @@ $(document).ready(function() {
             var money = 0;
             var values = [];
 
+            // Recount player's remaining chips
             while (money <= playerCash) {
                 money += 100;
                 values.push(100);
@@ -258,11 +270,14 @@ $(document).ready(function() {
         stand();
     });
 
+    // Modified version of hit, used only after a double down (displays only stand option after execution)
     $('#hitAfterDouble').click(function() {
         hit(true);
     });
 
     $('#allIn').click(function() {
+
+        // Append all chips from player's wallet to bet area and clear wallet
         $.each(playerChips[0], function(index, value) {
             addChipBet(10);
         });
@@ -292,6 +307,7 @@ $(document).ready(function() {
         });
     }
 
+    // A timer which sets the appropriate height for the dealer's card container (allows proper positioning)
     setInterval(function() {
         $('#dealerCards').css("height", $('.card').first().height() + "px");
     }, 100);
@@ -300,6 +316,7 @@ $(document).ready(function() {
 });
 
 function play() {
+    // Set up game parameters
     $('#playArea').fadeIn('slow');
     $('#colorOverlay').fadeOut('slow');
     $('h1').fadeOut('slow');
@@ -320,6 +337,7 @@ function play() {
     refreshChipImage();
     updateMoney();
 
+    // Enable draggables and droppables
     $('.droppableBet').droppable({
         drop: function(event, ui) {
             $(ui.draggable).appendTo("#chipDrop");
@@ -354,7 +372,7 @@ function play() {
 
     $('#play').hide();
 
-
+    // Slide bet area into center
     $('#chipDrop').animate({
         'width': '300px',
         'left': '0',
@@ -367,6 +385,7 @@ function play() {
 }
 
 function stand() {
+    // End player's turn and begin dealer's
     $('#statusBarText').html("The player stands. It is now the dealer's turn to play.");
     while (getHandValue('dealer') < 17) {
         dealerMove();
@@ -376,15 +395,20 @@ function stand() {
 }
 
 function hit(afterDouble) {
+    // Deal card to player and check the sum of all cards
     $('#double').hide();
     playerCards.push(dealCard());
     refreshCards('player');
     checkSum('player');
+
+    // If player busted, end the game
     if (playerBust) {
         endGame();
         $('#hitAfterDouble').hide();
         return false;
     }
+
+    // If the hit is following a double down, only show the Stand button after execution
     if (afterDouble) {
         $('#hitAfterDouble').hide();
         $('#stand').show();
@@ -427,6 +451,7 @@ function getCardValue(target) {
     }
 }
 
+// Calculate total value of the player's or dealer's hand. 
 function getHandValue(target) {
     var total = 0;
     var count = 0;
@@ -449,6 +474,8 @@ function getHandValue(target) {
             }
         });
     }
+
+    // Account for the fact that aces could equal either 1 or 11
     if (count === 0) {
         return total;
     } else {
@@ -522,6 +549,8 @@ function Deck() {
         ["spades", "A"]
     ];
     this.cards = [];
+
+    // Initialize 8 decks; this is a standard casino shoe of cards
     for (var i = 0; i < 8; i++) {
         for (g = 0; g < 52; g++) {
             this.cards.push(new Card(cardNames[g][0], cardNames[g][1]));
@@ -530,6 +559,7 @@ function Deck() {
 }
 
 
+// Returns a random card from the deck
 function dealCard() {
     var randomNum = Math.floor(Math.random() * deck.cards.length);
     var randomCard = deck.cards[randomNum];
@@ -537,6 +567,7 @@ function dealCard() {
     return randomCard;
 }
 
+// Rerenders the card image based on the cards present in the playerHand or dealerHand arrays.
 function refreshCards(target) {
     var cards = "";
     if (target == 'player') {
@@ -569,6 +600,7 @@ function refreshCards(target) {
     });
 }
 
+// Rerenders image of chips based on the chips present in the playerChips or betChips arrays
 function refreshChipImage() {
     var chipsTen = "";
     var chipsTenCount = 0;
@@ -651,6 +683,7 @@ function refreshChipImage() {
     $('#betHundredCount').html('x ' + chipsHundredCountBet);
 }
 
+// Refreshes the playerChips and betChips arrays based on the chips present on the screen
 function refreshChipArray() {
     playerChips[0] = [];
     playerChips[1] = [];
@@ -746,6 +779,8 @@ function getChipValue(chipURL) {
     return parseInt(value);
 }
 
+// The following four methods add or remove chips of various values from the playerChips and betChips arrays.
+
 function removeChip(value) {
     if (value == 10) {
         playerChips[0].splice(0, 1);
@@ -796,6 +831,7 @@ function addChipBet(value) {
     }
 }
 
+// Refreshes the money count based on the chips present on the screen in the wallet and bet area.
 function updateMoney() {
     playerCash = 0;
     playerBet = 0;
@@ -838,6 +874,8 @@ function updateMoney() {
 
 }
 
+
+// Determines the outcome of the game (winner, loser) based on the card values of the player and dealer
 function endGame() {
     dealerCards[0].visible = true;
     refreshCards('dealer');
@@ -870,6 +908,7 @@ function endGame() {
     if (playerCash > 0) {
         $('#playAgain').show();
     } else {
+        // If player has run out of money, the game provides an option to restart fully.
         $('#gameOverBG').fadeIn(1000);
         $('#playBankrupt').fadeIn(1000);
         $('#statusBarText').append(" You have gone bankrupt. Game over!");
@@ -877,6 +916,7 @@ function endGame() {
 
 }
 
+// Redistributes the money based on the outcome of the game.
 function executeBet(win) {
     if (!win) {
         betChips[0] = [];
