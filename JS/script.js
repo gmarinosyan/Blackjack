@@ -45,6 +45,11 @@ $(document).ready(function() {
         track: true
     });
 
+    $("#bet").tooltip({
+        disabled: false,
+        track: true
+    });
+
     // Button onclick commands
     $('#play').click(function() {
         play();
@@ -90,6 +95,12 @@ $(document).ready(function() {
                 refreshChipArray();
                 refreshChipImage();
                 $(ui.draggable).remove();
+                if(playerBet == 0){
+                    $('#bet').tooltip("enable");
+                }
+                else{
+                    $('#bet').tooltip("disable");
+                }
                 $('.draggable').draggable({
                     revert: "invalid"
                 });
@@ -104,6 +115,12 @@ $(document).ready(function() {
                 refreshChipArray();
                 refreshChipImage();
                 $(ui.draggable).remove();
+                if(playerBet == 0){
+                    $('#bet').tooltip("enable");
+                }
+                else{
+                    $('#bet').tooltip("disable");
+                }
                 $('.draggable').draggable({
                     revert: "invalid"
                 });
@@ -132,8 +149,10 @@ $(document).ready(function() {
 
     });
 
-
     $('#bet').click(function() {
+        if(playerBet == 0){
+
+        }else{
         for (var i = 0; i < 2; i++) {
             dealerCards.push(dealCard());
         }
@@ -174,6 +193,7 @@ $(document).ready(function() {
         $('#allIn').fadeOut(500);
 
         $('#statusBarText').html('The game begins!');
+    }
 
     });
 
@@ -317,8 +337,9 @@ $(document).ready(function() {
 
 function play() {
     // Set up game parameters
-    $('#playArea').fadeIn('slow');
+    $('#playArea').delay('fast').fadeIn('slow');
     $('#colorOverlay').fadeOut('slow');
+    $('#introArea').fadeOut('fast');
     $('h1').fadeOut('slow');
     $('#playBankrupt').hide();
     $('#startButton').hide();
@@ -345,6 +366,12 @@ function play() {
             refreshChipArray();
             refreshChipImage();
             $(ui.draggable).remove();
+            if(playerBet == 0){
+                    $('#bet').tooltip("enable");
+                }
+                else{
+                    $('#bet').tooltip("disable");
+                }
             $('.draggable').draggable({
                 revert: "invalid"
             });
@@ -358,6 +385,12 @@ function play() {
             refreshChipArray();
             refreshChipImage();
             $(ui.draggable).remove();
+            if(playerBet == 0){
+                    $('#bet').tooltip("enable");
+                }
+                else{
+                    $('#bet').tooltip("disable");
+                }
             $('.draggable').draggable({
                 revert: "invalid"
             });
