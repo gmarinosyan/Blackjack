@@ -1,0 +1,308 @@
+body, html {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    min-height: 200px;
+    background-color: #e74c3c;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+.card {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 22vmin;
+    height: auto;
+    min-width: 124px;
+    max-width: 141px;
+    -webkit-box-shadow: -1px 3px 34px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px 3px 34px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: -1px 3px 34px 0px rgba(0, 0, 0, 0.75);
+}
+.chip {
+    width: 40px;
+    height: auto;
+    position: absolute;
+    left: 0;
+}
+.bet {
+    left: 13px;
+}
+.chipT {
+    width: 40px;
+    height: auto;
+}
+#chipDrop {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 30px;
+    margin: auto;
+    height: 150px;
+    width: 100px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: white dashed 2px;
+    border-radius: 10px;
+}
+#colorOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 550px;
+    min-width: 500px;
+    background-color: #e74c3c;
+    z-index: 10;
+}
+#allIn {
+    position: absolute;
+    bottom: 20px;
+    left: 110px;
+}
+#startButton {
+    position: absolute;
+    z-index: 100;
+    text-align: center;
+    width: 100%;
+    height: 300px;
+    top: 50%;
+}
+h1 {
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    min-width: 800px;
+    text-align: center;
+    margin-bottom: 100px;
+    font-family: 'Abril Fatface';
+    color: #FFFFFF;
+    /*    font-size: 16px;
+*/
+    
+    font-size: 800%;
+    margin-top: 3vw;
+}
+#play {
+    font-family: 'Abril Fatface';
+    color: #e74c3c;
+    font-size: 2vmax;
+    padding: 2vw 3vw 2vw 3vw;
+    background: #ffffff;
+    border: solid #ffffff 1px;
+    text-decoration: none;
+    -webkit-border-radius: 3;
+    -moz-border-radius: 3;
+    border-radius: 3px;
+}
+#play:hover {
+    cursor: pointer;
+}
+#playArea {
+    position: relative;
+    width: 80%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url('../images/bg2.png');
+    /*  background-color:#e74c3c;
+*/
+    
+    overflow-x: hidden;
+    overflow-y: hidden;
+    min-height: 550px;
+    min-width: 660px;
+    max-height: 627px;
+    max-width: 1080px;
+/*    z-index: 5;
+*/}
+#gameOverBG {
+    position: absolute;
+    width: 80%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow-x: hidden;
+    overflow-y: hidden;
+    min-height: 550px;
+    min-width: 660px;
+    max-height: 627px;
+    max-width: 1080px;
+    z-index: 100;
+}
+@font-face {
+    font-family: 'Abril Fatface';
+    src: url('AbrilFatface-Regular.otf');
+}
+@font-face {
+    font-family: 'Nexa Bold';
+    src: url('Nexa Bold.otf');
+}
+@font-face {
+    font-family: 'Nexa Light';
+    src: url('Nexa Light.otf');
+}
+#playerChips {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 90px;
+    height: 170px;
+    border-top-right-radius: 30px;
+}
+#playerCards {
+    position: relative;
+    display: inline-block;
+    margin: 0 auto;
+}
+#dealerCards {
+    position: relative;
+    display: inline-block;
+    margin: 0 auto;
+}
+#playerStats {
+    position: absolute;
+    padding-top: 15px;
+    padding-left: 20px;
+    bottom: 0;
+    right: 0;
+    height: 60px;
+    width: 100px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-top-left-radius: 30px;
+}
+#playerCardContainer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 80px;
+    text-align: center;
+}
+#dealerCardContainer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 80px;
+    text-align: center;
+}
+#chipSplit {
+    position: absolute;
+    bottom: 8px;
+    left: 4px;
+    color: #ffffff;
+}
+#instructions {
+    position: absolute;
+    left: 90px;
+    top: 22px;
+    font-family: 'Nexa Light';
+    color: #FFFFFF;
+    font-size: 34px;
+    text-align: center;
+}
+#bgText {
+    position: absolute;
+    font-size: 120px;
+    width: 100%;
+    text-align: center;
+    top: 35%;
+    font-family: 'Abril Fatface';
+    color: rgba(0, 0, 0, 0.2);
+}
+#buttons {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 20px;
+}
+#statusBar {
+    position: absolute;
+    width: 100%;
+    height: 8%;
+    top: 0;
+    background-color: rgba(147, 41, 31, 0.5);
+    font-size: 100%;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: sans-serif;
+}
+#statusBarText {
+    position: relative;
+    top: 34%;
+    font-family: 'Nexa Light';
+}
+.ui-tooltip {
+    font-size: 10px;
+}
+.btn {
+    -webkit-border-radius: 10;
+    -moz-border-radius: 10;
+    border-radius: 10px;
+    border: 0;
+    -webkit-box-shadow: -1px 3px 34px 0px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: -1px 3px 34px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: -1px 3px 34px 0px rgba(0, 0, 0, 0.25);
+    font-family: 'Nexa Light';
+    color: #ab0000;
+    font-weight: bold;
+    font-size: 15px;
+    background: #f0f0f0;
+    padding: 8px 8px 8px 8px;
+    text-decoration: none;
+}
+#bet {
+    font-size: 30px;
+    padding: 13px 13px 13px 13px;
+    font-style: normal;
+}
+.btn:hover {
+    background: #C41C1C;
+    color: #ffffff;
+    text-decoration: none;
+}
+.btn:active {
+    background: #781818;
+    color: #ffffff;
+    text-decoration: none;
+}
+#playerTenCount, #playerTwentyCount, #playerFiftyCount, #playerHundredCount {
+    color: #BB0000;
+    font-family: 'Nexa Light';
+}
+#betTenCount, #betTwentyCount, #betFiftyCount, #betHundredCount {
+    color: #FFFFFF;
+    font-family: 'Nexa Light';
+}
+#moneyStats {
+    font-family: 'Nexa Light';
+}
+#playBankrupt {
+    font-size: 30px;
+}
+#restartContainer {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    z-index: 120;
+    bottom: 150px;
+}
+#gameOverText {
+    font-family: 'Abril Fatface';
+    color: white;
+    font-size: 60px;
+}
+#gameOverTextContainer {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 200px;
+}

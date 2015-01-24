@@ -1,0 +1,118 @@
+<html>
+
+<head>
+    <title>Blackjack</title>
+    <link rel="stylesheet" type="text/css" href="CSS/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="CSS/jquery-ui.theme.css">
+    <link rel="stylesheet" type="text/css" href="CSS/style.css">
+
+    <script type="text/javascript" src="JS/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="JS/jquery-ui.js"></script>
+    <script type="text/javascript" src="JS/script.js"></script>
+</head>
+
+<body>
+    <div id='colorOverlay'></div>
+    <h1>Blackjack</h1>
+    <div id='startButton'>
+        <input type='button' value='START' id='play'>
+    </div>
+    <div id='gameOverBG'>
+        <div id='restartContainer'>
+            <input type='button' value='Restart' id='playBankrupt' class='btn'>
+        </div>
+        <div id='gameOverTextContainer'>
+            <div id='gameOverText'>Bankrupt! Game over.</div>
+        </div>
+    </div>
+    <div id="playArea">
+        <div id="bgText">Blackjack</div>
+        <div id="statusBar"><span id="statusBarText">Welcome to Blackjack! Please place your bet.</span>
+        </div>
+        <div id="dealerCardContainer">
+            <div id='dealerCards'></div>
+        </div>
+        <br/>
+        <div id="playerCardContainer">
+            <div id='playerCards'></div>
+        </div>
+        <br/>
+        <div id="buttons">
+            <input type='button' value='Hit' id='hit' class='btn'>
+            <input type='button' value='Hit' id='hitAfterDouble' class='btn'>
+            <input type='button' value='Stand' id='stand' class='btn'>
+            <input type='button' value='Double Down' id='double' title='Not enough money!' class='btn'>
+            <input type='button' value='Play Again' id='playAgain' class='btn'>
+            <input type='button' value='Bet' id='bet' class='btn'>
+        </div>
+
+        <div id='allInButton'>
+            <input type='button' value='All in' id='allIn' class='btn'>
+        </div>
+
+
+        <div id='playerChips' class="droppableChips">
+            <table id='chipSplit' class=''>
+                <tr>
+                    <td id='playerTens'><img src='images/chips/10.png' class='chipT'>
+                    </td>
+                    <td id='playerTenCount'></td>
+                </tr>
+                <tr>
+                    <td id='playerTwenties'><img src='images/chips/20.png' class='chipT'>
+                    </td>
+                    <td id='playerTwentyCount'></td>
+                </tr>
+                <tr>
+                    <td id='playerFifties'><img src='images/chips/50.png' class='chipT'>
+                    </td>
+                    <td id='playerFiftyCount'></td>
+                </tr>
+                <tr>
+                    <td id='playerHundreds'><img src='images/chips/100.png' class='chipT'>
+                    </td>
+                    <td id='playerHundredCount'></td>
+                </tr>
+            </table>
+        </div>
+        <div id='playerStats'>
+            <table id='moneyStats'>
+                <tr>
+                    <td style="width:30px; text-align:center; font-size:18px; color:#9F0606">$</td>
+                    <td id='playerCash' style="text-align:center"></td>
+                </tr>
+                <tr>
+                    <td style="width:30px, text-align:right; color:#9F0606">Bet</td>
+                    <td id='playerBet' style="text-align:center"></td>
+                </tr>
+            </table>
+        </div>
+        <div id='chipDrop' class="droppableBet">
+            <div id='instructions'>Drag and drop your chips here!</div>
+            <table id='chipSplit2'>
+                <tr>
+                    <td id='betTens'><img src='images/chips/10.png' class='chipT'>
+                    </td>
+                    <td id='betTenCount'></td>
+                </tr>
+                <tr>
+                    <td id='betTwenties'><img src='images/chips/20.png' class='chipT'>
+                    </td>
+                    <td id='betTwentyCount'></td>
+                </tr>
+                <tr>
+                    <td id='betFifties'><img src='images/chips/50.png' class='chipT'>
+                    </td>
+                    <td id='betFiftyCount'></td>
+                </tr>
+                <tr>
+                    <td id='betHundreds'><img src='images/chips/100.png' class='chipT'>
+                    </td>
+                    <td id='betHundredCount'></td>
+                </tr>
+            </table>
+        </div>
+
+</body>
+
+</html>
