@@ -555,7 +555,7 @@ function refreshCards(target) {
         if (cardsChanged > 0) {
             $(this).css("left", "" + (40 * (cardsChanged)) + "px");
         }
-        $('#playerCards').css("width", "" + ($('.card').width() + 40 * (cardsChanged)) + "px");
+        $('#playerCards').css("width", "" + ($('.card').first().width() + 40 * (cardsChanged)) + "px");
         cardsChanged++;
 
     });
@@ -564,7 +564,7 @@ function refreshCards(target) {
         if (cardsChanged > 0) {
             $(this).css("left", "" + (40 * (cardsChanged)) + "px");
         }
-        $('#dealerCards').css("width", "" + ($('.card').width() + 40 * (cardsChanged)) + "px");
+        $('#dealerCards').css("width", "" + ($('.card').first().width() + 40 * (cardsChanged)) + "px");
         cardsChanged++;
     });
 }

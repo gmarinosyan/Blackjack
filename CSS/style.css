@@ -2,6 +2,8 @@ body, html {
     overflow-x: hidden;
     overflow-y: hidden;
     min-height: 200px;
+    padding:0px;
+    margin:0px;
     background-color: #e74c3c;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -15,7 +17,7 @@ body, html {
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 22vmin;
+    width: 141px;
     height: auto;
     min-width: 124px;
     max-width: 141px;
@@ -115,7 +117,7 @@ h1 {
     
     overflow-x: hidden;
     overflow-y: hidden;
-    min-height: 550px;
+    min-height: 580px;
     min-width: 660px;
     max-height: 627px;
     max-width: 1080px;
